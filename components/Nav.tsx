@@ -4,7 +4,7 @@ interface NavProps {
 
 export default function Nav({loggedIn}: NavProps) {
     const menus = [
-        {name: "home", href:"/"},
+        {name: "Home", href:"/"},
     ];
 
     const loggedInMenus = [
@@ -14,7 +14,7 @@ export default function Nav({loggedIn}: NavProps) {
 
     const nonLoggedInMenus = [
         {name: "Login", href: "/login"},
-        {name: "SignUp", href: "/signup"},
+        {name: "Sign Up", href: "/signup"},
     ]
 
     return (
