@@ -1,6 +1,6 @@
 # Fresh Auth Project
 
-# Table of Contents
+## Table of Contents
 
 - [Fresh Auth Project](#fresh-auth-project)
   - [🚀 Overview](#overview)
