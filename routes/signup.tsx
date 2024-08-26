@@ -1,14 +1,33 @@
 import { Handlers, PageProps } from "$fresh/server.ts";
+import { getCookies, setCookie } from "https://deno.land/std@0.201.0/http/cookie.ts";
+import { State } from "./_middleware.ts";
 
-export const handler: Handlers = {
-    POST(_req, _ctx) {
-        const headers = new Headers();
+export const handler: Handlers<any, State> = {
+    async POST(req, ctx) {
+      const form = await req.formData();
+      const email = form.get("email") as string;
+      const password = form.get("password") as string;
 
-        headers.set("location", "/");
-        return new Response(null, {
-            status: 303,
-            headers,
-        });
+      const {data, error}= await ctx.state.supabaseClient.auth.signUp({email, password});
+    
+      const headers = new Headers();
+
+      let redirect = "/"
+      if (error) {
+        redirect = `/signup?error=${error.message}`
+      } else if(data.session) {
+        setCookie(headers, {
+          name: 'supaLogin',
+          value: data.session?.access_token,
+          maxAge: data.session.expires_in
+        })
+      }
+      
+      headers.set("location", redirect);
+      return new Response(null, {
+          status: 303,
+          headers,
+      });
     }
 }
 
