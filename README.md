@@ -148,7 +148,7 @@ This project is open source and available under the MIT License.
     Deno
     Tailwind CSS
 
-Thanks to [@learnbydoing993](https://github.com/learnbydoing993) for this [code](https://github.com/learnbydoing993/fresh-todo).   
+Thanks to [@learnbydoing993](https://github.com/learnbydoing993) for this [code](https://github.com/learnbydoing993/fresh-auth-supabase).   
 
 ## 📬 Contact
 
